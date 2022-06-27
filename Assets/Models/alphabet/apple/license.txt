@@ -1,0 +1,11 @@
+Model Information:
+* title:	Apple
+* source:	https://sketchfab.com/3d-models/apple-da0cfd4c6a4e41c5aaf06797b463235b
+* author:	Moshe Caine (https://sketchfab.com/mosheca)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Apple" (https://sketchfab.com/3d-models/apple-da0cfd4c6a4e41c5aaf06797b463235b) by Moshe Caine (https://sketchfab.com/mosheca) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

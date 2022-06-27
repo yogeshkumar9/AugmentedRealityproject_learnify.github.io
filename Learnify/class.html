@@ -1,0 +1,108 @@
+<!doctype HTML>
+<html>
+
+<head>
+	<title>AR Music</title>
+	<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+	<script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+	<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js" integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+	<a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+		<a-assets>
+			<img id="drums" src="./Assets/drums.png">
+			<img id="guitar" src="./Assets/guitar.png">
+			<img id="mic" src="./Assets/mic.png">
+			<img id="piano" src="./Assets/piano.png">
+		</a-assets>
+
+		<a-marker class="ar-marker" id="drums-marker" type='barcode' value='0'>
+			<a-image src="#drums" rotation="90 0 0"></a-image>
+		</a-marker>
+		<a-marker class="ar-marker" id="guitar-marker" type='barcode' value='1'>
+			<a-image src="#guitar" rotation="90 0 0"></a-image>
+		</a-marker>
+		<a-marker class="ar-marker" id="mic-marker" type='barcode' value='2'>
+			<a-image src="#mic" rotation="90 0 0"></a-image>
+		</a-marker>
+		<a-marker class="ar-marker" id="piano-marker" type='barcode' value='3'>
+			<a-image src="#piano" rotation="90 0 0"></a-image>
+		</a-marker>
+
+	    <!-- add a simple camera -->
+	    <a-entity camera></a-entity>
+	</a-scene>
+
+	<script>
+		var drums = new Howl({
+			src: ['./audio/drums.mp3']
+		});
+		var guitar = new Howl({
+			src: ['./audio/guitar.mp3']
+		});
+		var mic = new Howl({
+			src: ['./audio/mic.mp3']
+		});
+		var piano = new Howl({
+			src: ['./audio/piano.mp3']
+		});
+
+		drums.play();
+		guitar.play();
+		mic.play();
+		piano.play();
+
+		// function playGuitar() {
+		// 	guitar.play();
+		// }
+		// function pauseGuitar() {
+		// 	guitar.pause();
+		// }
+		// function stopGuitar() {
+		// 	guitar.stop();
+		// }
+		// function muteGuitar() {
+		// 	guitar.mute(true);
+		// }
+		// function unmuteGuitar() {
+		// 	guitar.mute(false);
+		// }
+
+		window.onload = function () {
+			const drumsMarker = document.getElementById('drums-marker');
+			const guitarMarker = document.getElementById('guitar-marker');
+			const micMarker = document.getElementById('mic-marker');
+			const pianoMarker = document.getElementById('piano-marker');
+
+			drumsMarker.addEventListener('markerFound', function() {
+				drums.mute(false);
+			});
+			drumsMarker.addEventListener('markerLost', function() {
+				drums.mute(true);
+			});
+			guitarMarker.addEventListener('markerFound', function() {
+				guitar.mute(false);
+			});
+			guitarMarker.addEventListener('markerLost', function() {
+				guitar.mute(true);
+			});
+			micMarker.addEventListener('markerFound', function() {
+				mic.mute(false);
+			});
+			micMarker.addEventListener('markerLost', function() {
+				mic.mute(true);
+			});
+			pianoMarker.addEventListener('markerFound', function() {
+				piano.mute(false);
+			});
+			pianoMarker.addEventListener('markerLost', function() {
+				piano.mute(true);
+			});
+		}
+	</script>
+</body>
+
+</html>
